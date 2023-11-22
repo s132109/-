@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #282c34;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(10, 30px);
+      grid-gap: 1px;
+    }
+
+    .cell {
+      width: 30px;
+      height: 30px;
+      background-color: #61dafb;
+      border: 1px solid #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-board"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const rows = 20;
+      const cols = 10;
+      const board = [];
+
+      // Initialize game board
+      for (let i = 0; i < rows; i++) {
+        board[i] = [];
+        for (let j = 0; j < cols; j++) {
+          board[i][j] = 0;
+        }
+      }
+
+      function drawBoard() {
+        const gameBoard = document.getElementById("game-board");
+        gameBoard.innerHTML = "";
+
+        for (let i = 0; i < rows; i++) {
+          for (let j = 0; j < cols; j++) {
+            const cell = document.createElement("div");
+            cell.className = "cell";
+            cell.style.backgroundColor = board[i][j] ? "#61dafb" : "";
+            gameBoard.appendChild(cell);
+          }
+        }
+      }
+
+      drawBoard();
+    });
+  </script>
+</body>
+</html>
